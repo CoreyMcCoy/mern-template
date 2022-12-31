@@ -6,26 +6,30 @@ const Goal = require('../models/goalModel');
 // @route: GET /api/goals
 // @access: Public
 const getGoals = asyncHandler(async (req, res) => {
-    const goals = await Goal.find({});
-    res.json(goals);
-});
+    const goals = await Goal.find({ user: req.user.id });
 
+    res.status(200).json(goals);
+});
 // @desc: Set goals
 // @route: POST /api/goals
 // @access: Private
 const setGoal = asyncHandler(async (req, res) => {
     if (!req.body.text) {
         res.status(400);
-        throw new Error('Please a text field');
+        throw new Error('Please add a goal');
     }
-    const goal = await Goal.create(req.body);
+    const goal = await Goal.create({
+        text: req.body.text,
+        user: req.user.id,
+    });
+
     res.status(201).json(goal);
 });
 
 // @desc: Update goals
 // @route: PUT /api/goals/:id
 // @access: Private
-const updateGoals = asyncHandler(async (req, res) => {
+const updateGoal = asyncHandler(async (req, res) => {
     const goal = await Goal.findById(req.params.id);
     if (!goal) {
         res.status(404);
@@ -55,6 +59,6 @@ const deleteGoal = asyncHandler(async (req, res) => {
 module.exports = {
     getGoals,
     setGoal,
-    updateGoals,
+    updateGoal,
     deleteGoal,
 };

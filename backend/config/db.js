@@ -1,6 +1,5 @@
 // Description: This file is used to connect to the MongoDB database.
 const mongoose = require('mongoose');
-const dotenv = require('dotenv').config();
 
 mongoose.set('strictQuery', false);
 
