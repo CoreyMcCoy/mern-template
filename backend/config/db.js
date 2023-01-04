@@ -1,8 +1,6 @@
-// Description: This file is used to connect to the MongoDB database.
 const mongoose = require('mongoose');
 
 mongoose.set('strictQuery', false);
-
 const connectDB = async () => {
     try {
         const conn = await mongoose.connect(process.env.MONGO_URI, {
