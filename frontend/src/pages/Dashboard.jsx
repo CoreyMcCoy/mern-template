@@ -16,9 +16,10 @@ function Dashboard() {
     useEffect(() => {
         if (!user) {
             navigate('/login');
-        } else {
-            dispatch(getGoals());
+            return;
         }
+
+        dispatch(getGoals());
 
         return () => {
             dispatch(reset());
