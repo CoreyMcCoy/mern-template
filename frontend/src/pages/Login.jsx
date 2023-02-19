@@ -75,7 +75,7 @@ function Login() {
 
                     <div className='form-group'>
                         <button type='submit' className='btn btn-block'>
-                            Register
+                            Login
                         </button>
                     </div>
                 </form>
