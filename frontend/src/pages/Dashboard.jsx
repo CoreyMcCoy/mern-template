@@ -20,7 +20,7 @@ function Dashboard() {
             return;
         }
 
-        dispatch(getGoals());
+        // dispatch(getGoals());
 
         return () => {
             dispatch(reset());
